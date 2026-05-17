@@ -3,6 +3,7 @@ import {
   asTierName,
   buildRateLimitHeaders,
   createRateLimiter,
+  wrapRedisClient,
 } from "../index";
 
 const port = Number.parseInt(Bun.env.PORT ?? "1707", 10);
@@ -53,7 +54,7 @@ try {
 }
 
 const limiter = createRateLimiter({
-  redisClient: redis,
+  redisClient: wrapRedisClient(redis),
   tiers: {
     free: { maxTokens: 20, refillRate: 1, algorithm: "token-bucket" },
     pro: { maxTokens: 200, refillRate: 3.33, algorithm: "token-bucket" },

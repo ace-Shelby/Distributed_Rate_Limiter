@@ -19,7 +19,7 @@ class MockRedis implements RedisClient {
 
   constructor(private readonly responses: Array<unknown | Error>) {}
 
-  async eval(
+  async evalScript(
     script: string,
     numberOfKeys: number,
     ...args: Array<string | number>
@@ -32,7 +32,7 @@ class MockRedis implements RedisClient {
     }
 
     if (response === undefined) {
-      throw new Error("MockRedis received eval without a queued response");
+      throw new Error("MockRedis received evalScript without a queued response");
     }
 
     return response;
@@ -519,7 +519,7 @@ describe("createRateLimiter", () => {
         tiers: { free: { maxTokens: 10, refillRate: 1 } },
         defaultTier: asTierName("free"),
       }),
-    ).toThrow("redisClient with an eval method is required");
+    ).toThrow("redisClient must implement evalScript");
   });
 
   test("rejects non-function keyGenerator", () => {

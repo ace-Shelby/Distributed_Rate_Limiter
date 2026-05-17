@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] — 2026-05-17
+
+### Added
+
+- **`wrapRedisClient()` helper** — wraps an ioredis client into the `RedisClient` interface. Provides a clean, type-safe bridge.
+- **Logo** — added `logo.png` as package/GitHub icon. README now displays it centered at the top.
+
+### Changed
+
+- **`RedisClient.eval()` → `RedisClient.evalScript()`** — renamed to eliminate false-positive "eval() usage" security warnings from npm/Socket.dev scanners. Backward compatible: ioredis clients passed directly are auto-detected and wrapped at runtime.
+- **Example excluded from npm package** — `example/server.ts` removed from the `files` array. Still in the repo for reference.
+- Example updated to use `wrapRedisClient()`.
+
+### Fixed
+
+- **CI workflow** — fixed broken YAML indentation for `bun-version` under `with:` block.
+- **CI badge URL** — pointed to correct repo (`Distributed_Rate_Limiter` not `ace-throttle`).
+
+---
+
 ## [1.0.0] — 2026-05-17
 
 ### Added

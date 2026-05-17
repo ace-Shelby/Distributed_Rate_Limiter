@@ -1,11 +1,17 @@
-# ace-throttle
+<p align="center">
+  <img src="./logo.png" alt="ace-throttle" width="120" />
+</p>
 
-[![CI](https://github.com/ace-Shelby/ace-throttle/actions/workflows/ci.yml/badge.svg)](https://github.com/ace-Shelby/ace-throttle/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/ace-throttle.svg)](https://www.npmjs.com/package/ace-throttle)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<h1 align="center">ace-throttle</h1>
 
-**Distributed API rate limiting for Bun + Redis.**
-Token Bucket, Sliding Window & Fixed Window algorithms via atomic Lua scripts. Zero race conditions across replicas.
+<p align="center">
+  <a href="https://github.com/ace-Shelby/Distributed_Rate_Limiter/actions/workflows/ci.yml"><img src="https://github.com/ace-Shelby/Distributed_Rate_Limiter/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+  <a href="https://www.npmjs.com/package/ace-throttle"><img src="https://img.shields.io/npm/v/ace-throttle.svg" alt="npm version" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
+</p>
+
+<p align="center"><strong>Distributed API rate limiting for Bun + Redis.</strong><br/>
+Token Bucket, Sliding Window & Fixed Window algorithms via atomic Lua scripts. Zero race conditions across replicas.</p>
 
 ```bash
 bun add ace-throttle ioredis
@@ -44,9 +50,9 @@ This library fixes that with **atomic Lua scripts on Redis**. All counter logic 
 
 ```typescript
 import Redis from "ioredis";
-import { asTierName, createRateLimiter, buildRateLimitHeaders } from "ace-throttle";
+import { asTierName, createRateLimiter, buildRateLimitHeaders, wrapRedisClient } from "ace-throttle";
 
-const redis = new Redis({ host: "127.0.0.1", port: 6379 });
+const redis = wrapRedisClient(new Redis({ host: "127.0.0.1", port: 6379 }));
 
 const apiKeyPlans = new Map([
   ["key_free_123", "free"],
@@ -353,7 +359,7 @@ Redis `MULTI`/`EXEC` prevents interleaving but requires multiple round trips and
 
 ### Why IoC for the Redis client?
 
-A library that creates its own Redis connection is a liability. You cannot share a connection pool, configure TLS/Sentinel/Cluster, or control retry behavior. `ace-throttle` takes a client reference and calls `eval` on it. Everything else is yours.
+A library that creates its own Redis connection is a liability. You cannot share a connection pool, configure TLS/Sentinel/Cluster, or control retry behavior. `ace-throttle` takes a client reference and calls `evalScript` on it. Wrap ioredis with `wrapRedisClient()` or pass any object with an `evalScript()` method. Everything else is yours.
 
 ### Why a Circuit Breaker?
 

@@ -1,6 +1,6 @@
 {
   "name": "ace-throttle",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Distributed API rate limiting for Bun + Redis. Token Bucket, Sliding Window & Fixed Window algorithms via atomic Lua scripts. Zero race conditions across replicas.",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,7 +16,7 @@
     "README.md",
     "LICENSE",
     "CHANGELOG.md",
-    "example/server.ts"
+    "logo.png"
   ],
   "scripts": {
     "build": "rm -rf dist && bun build ./index.ts --target=bun --format=esm --outdir=dist --entry-naming='[name].js' && tsc -p tsconfig.build.json",

@@ -22,7 +22,7 @@ const redis = redisUrl
       host: Bun.env.REDIS_HOST ?? "127.0.0.1",
       port: Number.parseInt(Bun.env.REDIS_PORT ?? "6379", 10),
       username: Bun.env.REDIS_USERNAME,
-      password: "@ce-Shelby1707",
+      password: Bun.env.REDIS_PASSWORD,
       lazyConnect: true,
       maxRetriesPerRequest: 1,
     });

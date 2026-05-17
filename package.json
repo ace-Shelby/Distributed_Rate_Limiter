@@ -47,12 +47,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/harshpreet-singh/bun-redis-throttle"
+    "url": "https://github.com/ace-Shelby/Distributed_Rate_Limiter.git"
   },
   "bugs": {
-    "url": "https://github.com/harshpreet-singh/bun-redis-throttle/issues"
+    "url": "https://github.com/ace-Shelby/Distributed_Rate_Limiter/issues"
   },
-  "homepage": "https://github.com/harshpreet-singh/bun-redis-throttle#readme",
+  "homepage": "https://github.com/ace-Shelby/Distributed_Rate_Limiter#readme",
   "peerDependencies": {
     "ioredis": "^5.0.0"
   },

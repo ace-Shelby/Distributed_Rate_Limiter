@@ -1,6 +1,6 @@
 {
   "name": "bun-redis-throttle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Distributed API rate limiting for Bun + Redis. Token Bucket, Sliding Window & Fixed Window algorithms via atomic Lua scripts. Zero race conditions across replicas.",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

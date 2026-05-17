@@ -1,4 +1,4 @@
-# Contributing to bun-redis-throttle
+# Contributing to ace-throttle
 
 Thanks for your interest in contributing! Here's how to get started.
 
@@ -6,8 +6,8 @@ Thanks for your interest in contributing! Here's how to get started.
 
 ```bash
 # Clone the repo
-git clone https://github.com/harshpreet-singh/bun-redis-throttle.git
-cd bun-redis-throttle
+git clone https://github.com/ace-Shelby/Distributed_Rate_Limiter.git
+cd ace-throttle
 
 # Install dependencies
 bun install

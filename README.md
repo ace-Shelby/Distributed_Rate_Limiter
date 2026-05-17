@@ -1,14 +1,14 @@
-# bun-redis-throttle
+# ace-throttle
 
-[![CI](https://github.com/harshpreet-singh/bun-redis-throttle/actions/workflows/ci.yml/badge.svg)](https://github.com/harshpreet-singh/bun-redis-throttle/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/bun-redis-throttle.svg)](https://www.npmjs.com/package/bun-redis-throttle)
+[![CI](https://github.com/ace-Shelby/ace-throttle/actions/workflows/ci.yml/badge.svg)](https://github.com/ace-Shelby/ace-throttle/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/ace-throttle.svg)](https://www.npmjs.com/package/ace-throttle)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Distributed API rate limiting for Bun + Redis.**
 Token Bucket, Sliding Window & Fixed Window algorithms via atomic Lua scripts. Zero race conditions across replicas.
 
 ```bash
-bun add bun-redis-throttle ioredis
+bun add ace-throttle ioredis
 ```
 
 ---
@@ -44,7 +44,7 @@ This library fixes that with **atomic Lua scripts on Redis**. All counter logic 
 
 ```typescript
 import Redis from "ioredis";
-import { asTierName, createRateLimiter, buildRateLimitHeaders } from "bun-redis-throttle";
+import { asTierName, createRateLimiter, buildRateLimitHeaders } from "ace-throttle";
 
 const redis = new Redis({ host: "127.0.0.1", port: 6379 });
 
@@ -353,7 +353,7 @@ Redis `MULTI`/`EXEC` prevents interleaving but requires multiple round trips and
 
 ### Why IoC for the Redis client?
 
-A library that creates its own Redis connection is a liability. You cannot share a connection pool, configure TLS/Sentinel/Cluster, or control retry behavior. `bun-redis-throttle` takes a client reference and calls `eval` on it. Everything else is yours.
+A library that creates its own Redis connection is a liability. You cannot share a connection pool, configure TLS/Sentinel/Cluster, or control retry behavior. `ace-throttle` takes a client reference and calls `eval` on it. Everything else is yours.
 
 ### Why a Circuit Breaker?
 

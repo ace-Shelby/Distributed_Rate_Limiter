@@ -1,0 +1,64 @@
+{
+  "name": "bun-redis-throttle",
+  "version": "1.0.0",
+  "description": "Distributed API rate limiting for Bun + Redis. Token Bucket, Sliding Window & Fixed Window algorithms via atomic Lua scripts. Zero race conditions across replicas.",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "example/server.ts"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && bun build ./index.ts --target=bun --format=esm --outdir=dist --entry-naming='[name].js' && tsc -p tsconfig.build.json",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "bun run typecheck && bun test && bun run build"
+  },
+  "keywords": [
+    "bun",
+    "redis",
+    "rate-limit",
+    "rate-limiter",
+    "token-bucket",
+    "sliding-window",
+    "fixed-window",
+    "distributed",
+    "lua",
+    "atomic",
+    "circuit-breaker",
+    "throttle",
+    "api"
+  ],
+  "author": "Harshpreet Singh",
+  "license": "MIT",
+  "sideEffects": false,
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harshpreet-singh/bun-redis-throttle"
+  },
+  "bugs": {
+    "url": "https://github.com/harshpreet-singh/bun-redis-throttle/issues"
+  },
+  "homepage": "https://github.com/harshpreet-singh/bun-redis-throttle#readme",
+  "peerDependencies": {
+    "ioredis": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "ioredis": "^5.0.0",
+    "typescript": "^5.0.0"
+  }
+}

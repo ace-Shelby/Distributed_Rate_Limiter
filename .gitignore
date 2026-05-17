@@ -79,7 +79,11 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.*
 .env.test
+
+# macOS
+.DS_Store
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
